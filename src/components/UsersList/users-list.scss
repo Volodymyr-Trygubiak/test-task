@@ -1,0 +1,21 @@
+@use '../../scss/' as *;
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3.125rem 0;
+  gap: 1.25rem;
+
+  @include tablet {
+    gap: 1rem;
+  }
+
+  @include large {
+    gap: 1.8125rem;
+  }
+}
+
+section {
+  margin-bottom: 8.75rem;
+}
