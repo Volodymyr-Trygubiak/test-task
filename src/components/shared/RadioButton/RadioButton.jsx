@@ -1,10 +1,13 @@
 import React from 'react'
 import './radio-button.scss'
 
-const RadioButton = ({value, name, children}) => {
+const RadioButton = ({ checked, name, onChange, children }) => {
   return (
     <label className='custom'>
-      <input type="radio" value={value} name={name} />
+      <input type="radio"
+        name={name}
+        checked={checked}
+        onChange={onChange} />
       {children}
     </label>
   )
