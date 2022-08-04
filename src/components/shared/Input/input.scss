@@ -19,10 +19,6 @@
   position: relative;
   margin-bottom: 3.125rem;
   background-color: $body-bg;
-
-  & :last-child {
-    margin-bottom: 2.75rem;
-  }
 }
 
 .custom-placeholder {
@@ -31,17 +27,30 @@
   top: 50%;
   transform: translateY(-50%);
   transition: all .2s ease-in;
+
+  span {
+    transition: padding .2s ease-in;
+  }
 }
 
-.input:focus + .custom-placeholder,
-.has-value + .custom-placeholder {
+.input:focus+.custom-placeholder,
+.has-value+.custom-placeholder {
   font-size: 0.75rem;
   left: 0.75rem;
   top: 0;
   color: #d0cfcf;
-  padding: 0 0.25rem;
-  background: $body-bg;
   transition: all .2s ease-in;
+
+
+  span {
+    background-color: $body-bg;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    height: 2px;
+    padding: 0 0.25rem;
+    transition: padding .2s ease-in;
+  }
 }
 
 
