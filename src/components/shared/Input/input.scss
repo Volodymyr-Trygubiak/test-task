@@ -1,0 +1,98 @@
+@use '../../../scss/' as *;
+
+.input {
+  font-size: 1rem;
+  line-height: 26px;
+  display: flex;
+  width: 100%;
+  background-color: $body-bg;
+  height: 3.375rem;
+  padding: 0 1rem;
+  border: 1px solid #d0cfcf;
+  border-radius: 4px;
+
+}
+
+
+
+.wrap {
+  position: relative;
+  margin-bottom: 3.125rem;
+  background-color: $body-bg;
+
+  & :last-child {
+    margin-bottom: 2.75rem;
+  }
+}
+
+.custom-placeholder {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .2s ease-in;
+}
+
+.input:focus + .custom-placeholder,
+.has-value + .custom-placeholder {
+  font-size: 0.75rem;
+  left: 0.75rem;
+  top: 0;
+  color: #d0cfcf;
+  padding: 0 0.25rem;
+  background: $body-bg;
+  transition: all .2s ease-in;
+}
+
+
+input[type=file] {
+  display: none;
+}
+
+.file-input {
+  font-size: 1rem;
+  line-height: 26px;
+  display: flex;
+  margin-bottom: 3.125rem;
+
+  &-btn {
+    height: 100%;
+    border: 1px solid $black;
+    padding: 1rem;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+  }
+
+  &-text {
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid #d0cfcf;
+    border-left: none;
+    padding: 1rem;
+    border-radius: 0 4px 4px 0;
+    width: 100%;
+    white-space: nowrap;
+    max-width: 297px;
+    text-align: left;
+    overflow: hidden;
+    color: #d0cfcf;
+  }
+
+  .chosen {
+    color: $black;
+  }
+}
+
+.invalid {
+
+  .file-input-btn {
+    box-shadow: inset 0 0 0 1px $error;
+    border-color: $error;
+  }
+
+  .file-input-text {
+    box-shadow: inset 0 0 0 1px $error;
+    border-color: $error;
+  }
+
+}
