@@ -1,45 +1,42 @@
-
+import { forwardRef } from 'react';
 import './input.scss'
 
-const Input = ({ id, value, type, placeholder, onChange }) => {
-
-  const isValid = () => {
-    if (value) return 'input has-value'
-    return 'input'
-  }
+const Input = forwardRef(({ value, error, placeholder, onChange, ...inputProps }, ref) => {
+  
+  const isValue = value.length > 0 ? ' value' : '';
 
   return (
     <div className='wrap'>
       <input
-        id={id}
-        className={isValid()}
-        type={type}
-        value={value}
+        className={`input${error ? ' invalid' : ''}`}
         onChange={onChange}
+        {...inputProps}
       />
-      <span className='custom-placeholder'>
+      <label className={`custom-placeholder${isValue}`}>
         <span>{placeholder}</span>
-      </span>
+      </label>
+      {error && <div className='error-text'>{error?.message || 'Error'}</div>}
     </div>
   )
-}
+})
 
 
 
-export const FileInput = ({ value, onChange, children }) => {
+export const FileInput = ({ value, error, onChange, children = 'Upload', ...props }) => {
 
-  const isChosen = (file) => {
-    if (value) return 'file-input-text chosen'
-    return 'file-input-text'
-  }
-  
   return (
+
     <div className='file-input'>
-      <label className='file-input-btn'>
+      <label className={`file-input-btn${error ? ' error' : ''}`}>
         {children}
         <input type="file" onChange={onChange} />
       </label>
-      <span className={isChosen(value)}> {value || 'Upload your photo'}</span>
+      <div className={`file-input-text${error ? ' error' : ''}`}>
+        <span className={`${value ? 'chosen' : ''}`}>
+          {value?.name || 'Upload your photo'}
+        </span>
+      </div>
+      {error && <div className='error-text'>{error?.message || 'Error'}</div>}
     </div>
   )
 }
