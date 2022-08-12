@@ -40,6 +40,11 @@ img {
 }
 section {
   padding: 0 1rem;
+
+  @include desktop {
+    padding: 0;
+  }
+
 }
 h2 {
   font-size: 2.5rem;
